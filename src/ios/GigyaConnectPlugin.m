@@ -289,6 +289,10 @@ static void swizzleMethod(Class class, SEL destinationSelector, SEL sourceSelect
   swizzleMethod([AppDelegate class],
                 @selector(application:openURL:sourceApplication:annotation:),
                 @selector(gigya_swizzled_application:openURL:sourceApplication:annotation:));
+
+  swizzleMethod([AppDelegate class],
+                @selector(application:openURL:options:),
+                @selector(gigya_swizzled_application:openURL:options:));
 }
 
 - (BOOL)gigya_swizzled_application:(UIApplication *)application
@@ -305,6 +309,17 @@ static void swizzleMethod(Class class, SEL destinationSelector, SEL sourceSelect
         return wasHandled;
     else
         return [self gigya_swizzled_application:application openURL:url sourceApplication:sourceApplication annotation:annotation]; // super
+}
+
+- (BOOL)gigya_swizzled_application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+    BOOL wasHandled = [Gigya handleOpenURL:url 
+                                application:app 
+                                sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] 
+                                annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
+    if (wasHandled) {
+        return wasHandled;
+    } else
+        return [self gigya_swizzled_application:app openURL:url options:options];
 }
 
 @end
