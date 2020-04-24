@@ -1,5 +1,5 @@
-# cordova-plugin-gigya
-
+Gigya SDK for CordovaJS
+===================================
 The CordovaJS SDK provides an interface for the Gigya API
 
-Learn more: [http://developers.gigya.com/display/GD/Cordova](http://developers.gigya.com/display/GD/Cordova)
+Learn more: http://developers.gigya.com/display/GD/Cordova
