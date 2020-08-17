@@ -10,7 +10,3 @@ We had to do the following to prevent the build from failing because of missing 
 We had to make the following modification to the original plugin:
 - Add AppDelegate handler in src/ios/GigyaConnectPlugin.m - 2nd gigya_swizzled_application function. This is needed to allow auto login via Google
 (otherwise the customer has to sign in on Google every time the app is launched after being killed)
-
-For security reasons, line 37 in file plugin.xml had to be modified as follows:
-  <activity android:allowTaskReparenting="true" android:launchMode="singleTask" android:name="com.gigya.socialize.android.login.providers.WebLoginActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:exported="false">
-That is to avoid and attack based on lack of permissions calling WebLoginActivity (see https://hackerone.com/reports/499348).
