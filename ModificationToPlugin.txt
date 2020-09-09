@@ -1,4 +1,4 @@
-Base: Gigya Cordova SDK 3.6.5 (using gigya-sdk.jar version 3.3.33 and GigyaSDK.framework from version 3.7.5).
+Base: Gigya Cordova SDK 3.6.6 (using gigya-sdk.jar version 3.3.34 and GigyaSDK.framework from version 3.7.5).
 
 
 We had to do the following to prevent the build from failing because of missing Gradle dependencies:
