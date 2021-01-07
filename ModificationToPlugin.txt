@@ -7,6 +7,18 @@ We had to do the following to prevent the build from failing because of missing 
   to the res/assets/android/proguard-rules.txt (for missing com.linecorp.linesdk and com.tencent.mm.opensdk dependencies)
 
 
-We had to make the following modification to the original plugin:
+
+Modification to the original plugin:
 - Add AppDelegate handler in src/ios/GigyaConnectPlugin.m - 2nd gigya_swizzled_application function. This is needed to allow auto login via Google
 (otherwise the customer has to sign in on Google every time the app is launched after being killed)
+
+
+
+Replaced iOS framework with xcframework:
+- Go to cordova-plugin-gigya/src/ios/libs
+
+- Execute scripts/ios/xcframeworkconversion.sh
+
+- Delete GigyaSDK.framework
+
+- Edit plugin.xml and replace iOS framework with xcframework: <framework src="src/ios/libs/GigyaSDK.xcframework" custom="true"/>

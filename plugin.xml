@@ -65,7 +65,7 @@
         <header-file src="src/ios/GigyaConnectPlugin.h"/>
         <source-file src="src/ios/GigyaConnectPlugin.m"/>
 
-        <framework src="src/ios/libs/GigyaSDK.framework" custom="true"/>
+        <framework src="src/ios/libs/GigyaSDK.xcframework" custom="true"/>
 
         <framework src="Social.framework" weak="true"/>
         <framework src="Accounts.framework" weak="true"/>
